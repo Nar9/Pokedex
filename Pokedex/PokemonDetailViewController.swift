@@ -51,10 +51,11 @@ class PokemonDetailViewController: UIViewController {
         if pokemon.nextEvolutionId == "" {
             evolutionLabel.text = "No Evolutions"
             nextEvolutionImage.isHidden = true
+            currentEvolutionImageConstraint.constant = 0
         } else {
             nextEvolutionImage.isHidden = false
-            let constraint = currentEvolutionImageConstraint.constant - 100
-            currentEvolutionImageConstraint.constant = currentEvolutionImageConstraint.constant + constraint
+            let constraint = self.view.frame.width / 2 - 80
+            currentEvolutionImageConstraint.constant = currentEvolutionImageConstraint.constant - constraint
             nextEvolutionImage.image = UIImage(named: pokemon.nextEvolutionId)
             var string = "Next Evolution: \(pokemon.nextEvolutionText)"
             if pokemon.nextEvolutionLevel != "" {
